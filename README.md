@@ -1,38 +1,39 @@
-# create-svelte
+# AUISS Web NodeJS Prototype
+AUISS website clone in javascript with:
+- [sveltekit](https://kit.svelte.dev/) (fullstack javascript framework)
+- [carbon design system](https://www.carbondesignsystem.com/) (for quick ui)
+- [supabase](https://supabase.io) (for authentication)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm init svelte@next
-
-# create a new project in my-app
-npm init svelte@next my-app
-```
-
-> Note: the `@next` is temporary
+## Todo
+- [ ] dockerize app
+- [ ] setup ci/cd
+- [ ] deploy to digitalocean
+- [ ] add profile utility in header after login
+- [ ] setup database (local, not supabase (free tier only has 500mb storage))
+- [ ] add other user functionalities
+- [ ] add other admin functionalities
+- [ ] ...
 
 ## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+Setup local project:
 ```bash
+# setup
+git clone https://github.com/rmrt1n/auiss-nodejs-prototype.git
+cd auiss-nodejs-prototype
+npm install
+
+# run dev server
 npm run dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# to specify port
+# npm run dev -- --port XXXX
 ```
 
-## Building
-
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
-
+You need to have a supabase project setup first. [Tutorial](https://supabase.com/docs).
+After setup, copy the project url & anon key from the api setting. Rename the 
+`.env.example` file to `.env` and update the contents with your credentials.
 ```bash
-npm run build
+# change these
+VITE_SUPABASE_URL=https://XXX.supabase.co
+VITE_SUPABASE_ANON_KEY=XXX
 ```
-
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
