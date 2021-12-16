@@ -1,0 +1,23 @@
+main.bx--content {
+  background: none;
+  min-height: calc(100vh - 3rem - 3rem);
+}
+
+#login-container .bx--tile {
+  width: calc(100% - 40px);
+  min-width: 320px;
+  max-width: 530px;
+  padding: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (min-width: 0px) {
+  .bx--side-nav ~ .bx--content {
+    margin-left: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
