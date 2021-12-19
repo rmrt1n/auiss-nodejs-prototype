@@ -6,3 +6,8 @@ node_modules
 .env
 .env.*
 !.env.example
+
+# for supabase local development
+**/supabase/.branches
+**/supabase/.temp
+**/supabase/.env

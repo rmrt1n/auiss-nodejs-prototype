@@ -14,6 +14,13 @@ main.bx--content {
   transform: translate(-50%, -50%);
 }
 
+.club-tile .bx--tile--clickable {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0 2rem 0;
+}
+
 @media (min-width: 0px) {
   .bx--side-nav ~ .bx--content {
     margin-left: 0;
