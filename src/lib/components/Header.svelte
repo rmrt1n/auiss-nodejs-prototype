@@ -5,19 +5,31 @@
     HeaderNavItem,
     HeaderUtilities,
     HeaderGlobalAction,
+    HeaderAction,
+    HeaderPanelLink,
     SideNav,
     SideNavLink,
     SideNavItems,
   } from 'carbon-components-svelte';
   import Sun20 from 'carbon-icons-svelte/lib/Sun20';
   import Moon20 from 'carbon-icons-svelte/lib/Moon20';
+  import UserAvatarFilledAlt20 from 'carbon-icons-svelte/lib/UserAvatarFilledAlt20';
+  import { supabase } from '$lib/db';
 
   export let theme;
+  export let authenticated;
+
   let isSideNavOpen = false;
+  let isProfileOpen = false;
 
   const changeTheme = () => {
     console.log(theme);
     theme = theme == 'g10' ? 'g90' : 'g10';
+  };
+
+  const signOut = async () => {
+    authenticated = false;
+    await supabase.auth.signOut();
   };
 </script>
 
@@ -29,9 +41,17 @@
     <HeaderNavItem href="/kedai" text="Kedai" />
     <HeaderNavItem href="/blog" text="Blog" />
     <HeaderNavItem href="/about" text="About" />
-    <HeaderNavItem href="/signin" text="Sign In" />
+    {#if !authenticated}
+      <HeaderNavItem href="/signin" text="Sign In" />
+    {/if}
   </HeaderNav>
   <HeaderUtilities>
+    {#if authenticated}
+      <HeaderAction bind:isOpen={isProfileOpen} icon={UserAvatarFilledAlt20}>
+        <HeaderPanelLink href="/profile">Profile</HeaderPanelLink>
+        <HeaderPanelLink on:click={signOut}>Sign Out</HeaderPanelLink>
+      </HeaderAction>
+    {/if}
     <HeaderGlobalAction on:click={changeTheme} icon={Sun20} closeIcon={Moon20} />
   </HeaderUtilities>
 </Header>
@@ -45,6 +65,8 @@
     <SideNavLink href="/blog" text="Blog" />
     <SideNavLink href="/about" text="About" />
     <SideNavLink href="/contact" text="Contact" />
-    <SideNavLink href="/signin" text="Sign In" />
+    {#if !authenticated}
+      <SideNavLink href="/signin" text="Sign In" />
+    {/if}
   </SideNavItems>
 </SideNav>

@@ -24,10 +24,11 @@
   });
 
   let theme = 'g10';
+  let authenticated = $session.user && !$session.user.guest;
 </script>
 
 <Theme bind:theme persist>
-  <Header bind:theme bind:user={$session.user} />
+  <Header bind:theme bind:user={$session.user} bind:authenticated />
 
   <Content>
     <Grid>

@@ -11,13 +11,14 @@ AUISS website clone in javascript with:
 - [x] dockerize app
 - [ ] setup ci/cd
 - [ ] deploy to digitalocean
-- [ ] add profile utility in header after login
+- [x] add profile utility in header after login
 - [ ] add other user functionalities
 - [ ] add other admin functionalities
 - [x] add email validation for tp emails only
 - [ ] self-host supabase
 - [ ] setup docker-compose for app+supabase+smtp+nginx
 - [ ] document database schema
+- [ ] document supabase policies
 - [ ] document supabase policies
 - [ ] ...
 
