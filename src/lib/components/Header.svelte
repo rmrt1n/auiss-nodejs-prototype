@@ -23,7 +23,6 @@
   let isProfileOpen = false;
 
   const changeTheme = () => {
-    console.log(theme);
     theme = theme == 'g10' ? 'g90' : 'g10';
   };
 

@@ -1,0 +1,38 @@
+<script>
+  import {
+    Header,
+    HeaderUtilities,
+    HeaderGlobalAction,
+    SideNav,
+    SideNavLink,
+    SideNavItems,
+  } from 'carbon-components-svelte';
+  import Sun20 from 'carbon-icons-svelte/lib/Sun20';
+  import Moon20 from 'carbon-icons-svelte/lib/Moon20';
+
+  export let theme;
+
+  let isSideNavOpen = false;
+
+  const changeTheme = () => {
+    theme = theme == 'g10' ? 'g90' : 'g10';
+  };
+</script>
+
+<Header company="AUISS" platformName="Admin" bind:isSideNavOpen>
+  <HeaderUtilities>
+    <HeaderGlobalAction on:click={changeTheme} icon={Sun20} closeIcon={Moon20} />
+  </HeaderUtilities>
+</Header>
+
+<SideNav bind:isOpen={isSideNavOpen}>
+  <SideNavItems>
+    <SideNavLink href="/admin" text="Home" />
+    <SideNavLink href="/admin" text="Events" />
+    <SideNavLink href="/admin" text="Clubs" />
+    <SideNavLink href="/admin" text="Kedai" />
+    <SideNavLink href="/admin" text="Blog" />
+    <SideNavLink href="/admin" text="About" />
+    <SideNavLink href="/admin" text="Contact" />
+  </SideNavItems>
+</SideNav>

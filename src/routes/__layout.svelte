@@ -10,9 +10,6 @@
 
   supabase.auth.onAuthStateChange(async (event, _session) => {
     if (event !== 'SIGNED_OUT') {
-      // THIS CAUSES COOKIE TO NOT BE SET FOR SOME REASON
-      // CAUSES GOTRUE API ERROR BUT DOESN'T EFFECT ANYTHING PROBABLY
-      // TODO: FIND FIX FOR THIS
       session.set({ user: _session.user });
       await setAuthCookie(_session);
       goto('/profile');

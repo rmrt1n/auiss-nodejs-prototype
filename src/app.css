@@ -21,6 +21,21 @@ main.bx--content {
   padding: 2rem 0 2rem 0;
 }
 
+/* header not respecting theme change */
+.bx--side-nav {
+  background-color: var(--cds-ui-background);
+  border-right: 1px solid var(--cds-ui-03);
+}
+
+a.bx--side-nav__link--current {
+  background-color: var(--cds-ui-03);
+}
+
+a.bx--side-nav__link > .bx--side-nav__link-text,
+.bx--side-nav a.bx--header__menu-item .bx--text-truncate-end {
+  color: var(--cds-text-01);
+}
+
 @media (min-width: 0px) {
   .bx--side-nav ~ .bx--content {
     margin-left: 0;
