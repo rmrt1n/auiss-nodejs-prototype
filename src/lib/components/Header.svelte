@@ -6,6 +6,7 @@
     HeaderUtilities,
     HeaderGlobalAction,
     HeaderAction,
+    HeaderActionLink,
     HeaderPanelLink,
     SideNav,
     SideNavLink,
@@ -14,10 +15,12 @@
   import Sun20 from 'carbon-icons-svelte/lib/Sun20';
   import Moon20 from 'carbon-icons-svelte/lib/Moon20';
   import UserAvatarFilledAlt20 from 'carbon-icons-svelte/lib/UserAvatarFilledAlt20';
+  import SettingsAdjust20 from 'carbon-icons-svelte/lib/SettingsAdjust20';
   import { supabase } from '$lib/db';
 
   export let theme;
   export let authenticated;
+  export let role;
 
   let isSideNavOpen = false;
   let isProfileOpen = false;
@@ -45,6 +48,9 @@
     {/if}
   </HeaderNav>
   <HeaderUtilities>
+    {#if role === 'admin'}
+      <HeaderActionLink href="/admin" icon={SettingsAdjust20} />
+    {/if}
     {#if authenticated}
       <HeaderAction bind:isOpen={isProfileOpen} icon={UserAvatarFilledAlt20}>
         <HeaderPanelLink href="/profile">Profile</HeaderPanelLink>

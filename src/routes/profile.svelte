@@ -1,7 +1,7 @@
 <script context="module">
   export const load = async ({ session }) => {
-    const { user } = session;
-    if (user && !user.guest) return { props: { user: user } };
+    const { user, authenticated } = session;
+    if (authenticated) return { props: { user: user } };
     return {
       status: 302,
       redirect: '/signin',

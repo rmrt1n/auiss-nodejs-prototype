@@ -45,6 +45,7 @@
     const { error } = await supabase.auth.signIn({
       email: lower,
     });
+    if (error) console.log(error.message);
     status = error ? 'error' : 'finished';
     description = error ? 'An error occured' : 'Check your inbox';
   };

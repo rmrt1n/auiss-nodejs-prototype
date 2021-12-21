@@ -1,7 +1,7 @@
 <script context="module">
   import { supabase } from '$lib/db';
   export const load = async () => {
-    const { data, error } = await supabase.from('club_t').select();
+    const { data, error } = await supabase.from('clubs').select();
 
     if (error) {
       console.log(error.message);

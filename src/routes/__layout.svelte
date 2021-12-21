@@ -21,11 +21,12 @@
   });
 
   let theme = 'g10';
-  let authenticated = $session.user && !$session.user.guest;
+  let { authenticated } = $session;
+  const role = $session.role;
 </script>
 
 <Theme bind:theme persist>
-  <Header bind:theme bind:user={$session.user} bind:authenticated />
+  <Header bind:theme bind:authenticated {role} />
 
   <Content>
     <Grid>

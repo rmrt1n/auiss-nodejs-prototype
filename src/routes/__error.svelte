@@ -1,1 +1,15 @@
-<h1>404: Page Not Found</h1>
+<script context="module">
+  export const load = async ({ error, status }) => {
+    return {
+      props: {
+        title: `${status}: ${error.message}`,
+      },
+    };
+  };
+</script>
+
+<script>
+  export let title;
+</script>
+
+<h1>{title}</h1>

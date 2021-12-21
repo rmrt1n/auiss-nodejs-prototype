@@ -25,5 +25,12 @@ export const handle = async ({ request, resolve }) => {
 
 export const getSession = async (request) => {
   const { user } = request.locals;
-  return { user };
+  const authenticated = user && !user.guest;
+  let role = '';
+  if (authenticated) {
+    const { data } = await supabase.from('user_roles').select().eq('id', user.id).single();
+    role = data.role;
+  }
+
+  return { user, authenticated, role };
 };
