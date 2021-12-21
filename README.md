@@ -19,6 +19,8 @@ AUISS website clone in javascript with:
 - [ ] setup docker-compose for app+supabase+smtp+nginx
 - [/] document database schema, policies, functions, triggers, etc
 - [ ] add logic for student & alumni roles
+- [ ] add input validation for user profile update
+- [ ] add user_club table and func
 - [ ] ...
 
 ## Developing

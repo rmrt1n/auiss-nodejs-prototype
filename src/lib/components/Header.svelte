@@ -54,6 +54,7 @@
     {#if authenticated}
       <HeaderAction bind:isOpen={isProfileOpen} icon={UserAvatarFilledAlt20}>
         <HeaderPanelLink href="/profile">Profile</HeaderPanelLink>
+        <HeaderPanelLink href="/profile/clubs">You Clubs</HeaderPanelLink>
         <HeaderPanelLink on:click={signOut}>Sign Out</HeaderPanelLink>
       </HeaderAction>
     {/if}

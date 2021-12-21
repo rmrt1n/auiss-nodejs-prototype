@@ -32,6 +32,8 @@ create table public.user_roles (
 alter table public.profiles enable row level security;
 alter table public.clubs enable row level security;
 alter table public.user_roles enable row level security;
+create policy "Enable profile read to everyone" on public.profiles for select using (true);
+create policy "Enable clubs read to everyone" on public.clubs for select using (true);
 
 -- FUNCTIONS
 create function public.handle_new_user() 
