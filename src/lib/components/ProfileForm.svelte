@@ -13,13 +13,18 @@
     Button,
   } from 'carbon-components-svelte';
   import ArrowRight16 from 'carbon-icons-svelte/lib/ArrowRight16';
+  import { supabase } from '$lib/db';
+  import { goto } from '$app/navigation';
 
+  export let id;
   export let tp_number;
-  let name = '';
-  let course = '';
+
+  let name, course, month, year;
+  name = course = month = year = '';
   let gender = 'M'; // M | F
-  let month = '';
-  let year = '';
+
+  let invalidName, invalidCourse, invalidMonth, invalidYear;
+  invalidName = invalidCourse = invalidMonth = invalidYear = false;
 
   const months = [
     { id: '0', text: 'January' },
@@ -40,6 +45,58 @@
     id: i,
     text: new Date().getFullYear() - i,
   }));
+
+  const isValidInput = () => {
+    if (name.trim() === '') {
+      invalidName = true;
+      return false;
+    }
+    if (course.trim() === '') {
+      invalidCourse = true;
+      return false;
+    }
+    if (!years.some((y) => y.text === year)) {
+      invalidYear = true;
+      return false;
+    }
+    if (!months.some((m) => m.text === month)) {
+      invalidMonth = true;
+      return false;
+    }
+    return true;
+  };
+
+  const monthDiff = (d1, d2) => {
+    let diff = (d1.getTime() - d2.getTime()) / 1000;
+    diff /= 60 * 60 * 24 * 7 * 4;
+    return Math.abs(Math.round(diff));
+  };
+
+  const onSubmit = async () => {
+    if (!isValidInput()) return;
+    const intake = new Date(year, month, 1);
+    year = parseInt(year);
+    // https://stackoverflow.com/questions/13566552/easiest-way-to-convert-month-name-to-month-number-in-js-jan-01
+    month = new Date(Date.parse(month + ' 1, 2021')).getMonth() + 1;
+    const diff = monthDiff(new Date(), intake);
+    const role = diff >= 36 ? 'alumni' : 'student';
+
+    const { error: e1 } = await supabase
+      .from('profiles')
+      .update({
+        name: name,
+        course: course,
+        gender: gender,
+        intake_year: year,
+        intake_month: month,
+      })
+      .eq('id', id);
+    if (e1) console.log(e1.message);
+
+    const { error: e2 } = await supabase.from('user_roles').update({ role }).eq('id', id);
+    if (e2) console.log(e2.message);
+    goto('#');
+  };
 </script>
 
 <Tile>
@@ -52,10 +109,10 @@
     <Row>
       <Column>
         <SkeletonPlaceholder style="margin-bottom: 1.5rem" />
-        <Form>
+        <Form on:submit={onSubmit}>
           <Row>
             <Column>
-              <h2>{tp_number.toUpperCase()}</h2>
+              <h2>{tp_number}</h2>
             </Column>
           </Row>
           <Row>
@@ -65,12 +122,15 @@
                 labelText="Name"
                 placeholder="Your name"
                 bind:value={name}
+                bind:invalid={invalidName}
+                invalidText="Name cannot be empty"
+                on:change={() => (invalidName = false)}
               />
             </Column>
           </Row>
           <Row>
             <Column>
-              <RadioButtonGroup bind:selected={gender}>
+              <RadioButtonGroup legendText="Gender" bind:selected={gender}>
                 <RadioButton labelText="Male" value="M" />
                 <RadioButton labelText="Female" value="F" />
               </RadioButtonGroup>
@@ -83,6 +143,9 @@
                 labelText="Course"
                 placeholder="Your course"
                 bind:value={course}
+                bind:invalid={invalidCourse}
+                invalidText="Course cannot be empty"
+                on:change={() => (invalidCourse = false)}
               />
             </Column>
           </Row>
@@ -93,6 +156,9 @@
                 placeholder="Your intake year"
                 items={years}
                 bind:value={year}
+                bind:invalid={invalidYear}
+                invalidText="Not a valid Year"
+                on:change={() => (invalidYear = false)}
               />
             </Column>
           </Row>
@@ -103,12 +169,15 @@
                 placeholder="Your intake month"
                 items={months}
                 bind:value={month}
+                bind:invalid={invalidMonth}
+                invalidText="Not a valid Month"
+                on:change={() => (invalidMonth = false)}
               />
             </Column>
           </Row>
           <Row>
             <Column>
-              <Button tyep="submit" icon={ArrowRight16}>Sign In</Button>
+              <Button type="submit" icon={ArrowRight16}>Sign In</Button>
             </Column>
           </Row>
         </Form>

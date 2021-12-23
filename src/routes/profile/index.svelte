@@ -4,7 +4,7 @@
     const { user, authenticated, role } = session;
     if (authenticated) {
       const { data } = await supabase.from('profiles').select().eq('id', user.id).single();
-      return { props: { user, profile: data, role } };
+      return { props: { profile: data, role: role } };
     }
     return {
       status: 302,
@@ -15,6 +15,7 @@
 
 <script>
   import ProfileForm from '$lib/components/ProfileForm.svelte';
+  import Profile from '$lib/components/Profile.svelte';
 
   export let profile;
   export let role;
@@ -23,7 +24,7 @@
 </script>
 
 {#if role === 'user'}
-  <ProfileForm {tp_number} />
+  <ProfileForm {tp_number} id={profile.id} />
 {:else}
-  <h1>User</h1>
+  <Profile {profile} />
 {/if}

@@ -14,6 +14,14 @@ create table public.profiles (
   intake_month smallint
 );
 
+alter table public.profiles enable row level security;
+
+create policy "Enable read access to all loggedin users" on public.profiles 
+  for select using (auth.role() = 'authenticated');
+create policy "Enable update access for users based on id" on public.profiles
+  for update using (auth.uid() = id)
+  with check (auth.uid() = id)
+
 -- clubs
 create table public.clubs (
   id uuid default uuid_generate_v4() primary key,
@@ -22,18 +30,24 @@ create table public.clubs (
   thumbnail_path character not null
 );
 
+alter table public.clubs enable row level security;
+
+create policy "Enable clubs read to everyone" on public.clubs 
+  for select using (true);
+
 -- user roles
 create table public.user_roles (
   id uuid primary key references public.profiles,
   role app_role not null
 )
-
--- ROW LEVEL SECURITY
-alter table public.profiles enable row level security;
-alter table public.clubs enable row level security;
 alter table public.user_roles enable row level security;
-create policy "Enable profile read to everyone" on public.profiles for select using (true);
-create policy "Enable clubs read to everyone" on public.clubs for select using (true);
+
+create policy "Enable read access to user only" on public.profiles 
+  for select using (auth.uid() = id);
+create policy "Enable update access for users based on id" on public.profiles
+  for update using (auth.uid() = id)
+  with check (auth.uid() = id)
+
 
 -- FUNCTIONS
 create function public.handle_new_user() 
@@ -43,7 +57,7 @@ security definer set search_path = public
 as $$
 begin
   insert into public.profiles (id, tp_number)
-  values (new.id, split_part(new.email, '@', 1));
+  values (new.id, upper(split_part(new.email, '@', 1)));
 
   insert into public.user_roles (id, role)
   values (new.id, 'user'));
