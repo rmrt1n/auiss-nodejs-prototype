@@ -17,9 +17,9 @@ AUISS website clone in javascript with:
 - [x] add email validation for tp emails only
 - [ ] self-host supabase (on hold now because supabase studio doesn't support storage atm)
 - [ ] setup docker-compose for app+supabase+smtp+nginx
-- [/] document database schema, policies, functions, triggers, etc
+- [ ] document database schema, policies, functions, triggers, etc
 - [ ] add logic for student & alumni roles
-- [ ] add input validation for user profile update
+- [x] add input validation for user profile update
 - [ ] add user_club table and func
 - [ ] ...
 
