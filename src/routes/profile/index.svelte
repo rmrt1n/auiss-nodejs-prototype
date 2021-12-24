@@ -3,8 +3,8 @@
   export const load = async ({ session }) => {
     const { user, authenticated, role } = session;
     if (authenticated) {
-      const { data } = await supabase.from('profiles').select().eq('id', user.id).single();
-      return { props: { profile: data, role: role } };
+      const { data: profile } = await supabase.from('profiles').select().eq('id', user.id).single();
+      return { props: { profile, role } };
     }
     return {
       status: 302,
@@ -24,7 +24,7 @@
 </script>
 
 {#if role === 'user'}
-  <ProfileForm {tp_number} id={profile.id} />
+  <ProfileForm {tp_number} id={profile.id} bind:role />
 {:else}
   <Profile {profile} />
 {/if}

@@ -17,7 +17,7 @@
       'October',
       'November',
       'December',
-    ][id];
+    ][id - 1];
   };
 </script>
 

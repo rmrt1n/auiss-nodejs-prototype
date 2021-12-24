@@ -27,8 +27,9 @@ export const getSession = async (request) => {
   const { user } = request.locals;
   const authenticated = user && !user.guest;
   let role = '';
+
   if (authenticated) {
-    const { data } = await supabase.from('user_roles').select().eq('id', user.id).single();
+    const { data } = await supabase.from('user_roles').select().eq('user_id', user.id).single();
     role = data.role;
   }
 

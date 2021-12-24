@@ -22,6 +22,7 @@ create policy "Enable update access for users based on id" on public.profiles
   for update using (auth.uid() = id)
   with check (auth.uid() = id)
 
+
 -- clubs
 create table public.clubs (
   id uuid default uuid_generate_v4() primary key,
@@ -35,9 +36,10 @@ alter table public.clubs enable row level security;
 create policy "Enable clubs read to everyone" on public.clubs 
   for select using (true);
 
+
 -- user roles
 create table public.user_roles (
-  id uuid primary key references public.profiles,
+  user_id uuid primary key references public.profiles,
   role app_role not null
 )
 alter table public.user_roles enable row level security;
@@ -47,6 +49,15 @@ create policy "Enable read access to user only" on public.profiles
 create policy "Enable update access for users based on id" on public.profiles
   for update using (auth.uid() = id)
   with check (auth.uid() = id)
+
+
+-- user clubs
+create table public.user_clubs (
+  user_id uuid references public.profiles,
+  club_id uuid references public.clubs,
+  primary key (user_id, club_id)
+)
+alter table public.user_clubs enable row level security;
 
 
 -- FUNCTIONS

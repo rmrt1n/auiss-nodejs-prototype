@@ -14,10 +14,8 @@
   } from 'carbon-components-svelte';
   import ArrowRight16 from 'carbon-icons-svelte/lib/ArrowRight16';
   import { supabase } from '$lib/db';
-  import { goto } from '$app/navigation';
 
-  export let id;
-  export let tp_number;
+  export let id, tp_number, role;
 
   let name, course, month, year;
   name = course = month = year = '';
@@ -79,7 +77,7 @@
     // https://stackoverflow.com/questions/13566552/easiest-way-to-convert-month-name-to-month-number-in-js-jan-01
     month = new Date(Date.parse(month + ' 1, 2021')).getMonth() + 1;
     const diff = monthDiff(new Date(), intake);
-    const role = diff >= 36 ? 'alumni' : 'student';
+    const newRole = diff >= 36 ? 'alumni' : 'student';
 
     const { error: e1 } = await supabase
       .from('profiles')
@@ -93,9 +91,9 @@
       .eq('id', id);
     if (e1) console.log(e1.message);
 
-    const { error: e2 } = await supabase.from('user_roles').update({ role }).eq('id', id);
+    const { error: e2 } = await supabase.from('user_roles').update({ role: newRole }).eq('id', id);
     if (e2) console.log(e2.message);
-    goto('#');
+    role = newRole;
   };
 </script>
 
