@@ -32,7 +32,7 @@
   <SideNavItems>
     <SideNavLink href="/admin" text="Home" />
     <SideNavLink href="/admin" text="Events" />
-    <SideNavLink href="/admin" text="Clubs" />
+    <SideNavLink href="/admin/clubs" text="Clubs" />
     <SideNavLink href="/admin" text="Kedai" />
     <SideNavLink href="/admin" text="Blog" />
     <SideNavLink href="/admin" text="About" />

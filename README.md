@@ -23,6 +23,8 @@ AUISS website clone in javascript with:
 - [x] add user_club table and func
 - [ ] add ui for user clubs
 - [ ] fix posgres rls issue for select with auth.role() and auth.uid()
+- [ ] add rls for club update (only allow admin)
+- [ ] add thumbnail update option with filepicker for club admin
 - [ ] ...
 
 ## Developing
