@@ -24,7 +24,8 @@ AUISS website clone in javascript with:
 - [ ] add ui for user clubs
 - [ ] fix posgres rls issue for select with auth.role() and auth.uid()
 - [ ] add rls for club update (only allow admin)
-- [ ] add thumbnail update option with filepicker for club admin
+- [x] add thumbnail update option with filepicker for club admin
+- [ ] supabase storage after file update returns old file bug???
 - [ ] ...
 
 ## Developing

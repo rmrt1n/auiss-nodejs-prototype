@@ -1,6 +1,6 @@
 <script>
   import { supabase } from '$lib/db';
-  import { SkeletonPlaceholder } from 'carbon-components-svelte';
+  import { FileUploaderButton, SkeletonPlaceholder } from 'carbon-components-svelte';
 
   export let thumbnail_path;
   export let name;
@@ -22,10 +22,44 @@
     }
   };
   getThumbnail();
+
+  const uploadThumbnail = async (e) => {
+    const f = e.target.files[0];
+    src = URL.createObjectURL(f);
+    console.log(f, thumbnail_path);
+    const { error } = await supabase.storage.from('bucket').update(thumbnail_path, f, {
+      cacheControl: '3600',
+      upsert: false,
+    });
+    if (error) console.log(error);
+  };
 </script>
 
-{#if loading}
-  <SkeletonPlaceholder />
-{:else}
-  <img {src} alt={name + ' thumbnail'} style="width: 80px; height: 80px;" />
-{/if}
+<div class="club-thumbnail">
+  <div class="club-thumbnail-img">
+    {#if loading}
+      <SkeletonPlaceholder />
+    {:else}
+      <img {src} alt={name + ' thumbnail'} style="width: 80px; height: 80px;" />
+    {/if}
+  </div>
+  <FileUploaderButton
+    disableLabelChanges
+    labelText="Upload image"
+    accept={['.jpg', '.jpeg', '.png', '.bmp']}
+    on:change={uploadThumbnail}
+  />
+</div>
+
+<style>
+  .club-thumbnail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .club-thumbnail-img {
+    margin-bottom: 5px;
+  }
+</style>

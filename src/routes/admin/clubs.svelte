@@ -19,7 +19,7 @@
   export let clubs;
 
   const headers = [
-    { key: 'id', value: 'ID' },
+    /* { key: 'id', value: 'ID' }, */
     { key: 'name', value: 'Name' },
     { key: 'desc', value: 'Description' },
     { key: 'thumbnail_path', value: 'Thumbnail' },
@@ -44,7 +44,7 @@
   };
 </script>
 
-<DataTable zebra title="Clubs" {headers} rows={clubs}>
+<DataTable title="Clubs" {headers} rows={clubs}>
   <span slot="cell" let:row let:cell>
     {#if cell.key === 'thumbnail_path'}
       <ClubThumbnail thumbnail_path={cell.value} name={row.name} />
