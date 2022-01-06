@@ -79,6 +79,7 @@
     const diff = monthDiff(new Date(), intake);
     const newRole = diff >= 36 ? 'alumni' : 'student';
 
+    // prettier-ignore
     const { error: e1 } = await supabase
       .from('profiles')
       .update({
@@ -91,7 +92,11 @@
       .eq('id', id);
     if (e1) console.log(e1.message);
 
-    const { error: e2 } = await supabase.from('user_roles').update({ role: newRole }).eq('id', id);
+    // prettier-ignore
+    const { error: e2 } = await supabase
+      .from('user_roles')
+      .update({ role: newRole })
+      .eq('id', id);
     if (e2) console.log(e2.message);
     role = newRole;
   };

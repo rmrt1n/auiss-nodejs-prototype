@@ -3,10 +3,12 @@
   export const load = async ({ session }) => {
     const { user, authenticated, role } = session;
     if (authenticated) {
+      // prettier-ignore
       const { data } = await supabase
         .from('user_clubs')
         .select('clubs:club_id(*)')
         .eq('user_id', user.id);
+
       const clubs = [...data].map((e) => e.clubs);
       return { props: { clubs, role } };
     }

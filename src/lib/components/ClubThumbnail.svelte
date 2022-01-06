@@ -10,7 +10,11 @@
 
   const getThumbnail = async () => {
     try {
-      const { data, error } = await supabase.storage.from('bucket').download(thumbnail_path);
+      // prettier-ignore
+      const { data, error } = await supabase
+        .storage
+        .from('bucket')
+        .download(thumbnail_path);
 
       if (error) throw error;
       src = URL.createObjectURL(data);
@@ -27,10 +31,14 @@
     const f = e.target.files[0];
     src = URL.createObjectURL(f);
     console.log(f, thumbnail_path);
-    const { error } = await supabase.storage.from('bucket').update(thumbnail_path, f, {
-      cacheControl: '3600',
-      upsert: false,
-    });
+    // prettier-ignore
+    const { error } = await supabase
+      .storage
+      .from('bucket')
+      .update(thumbnail_path, f, {
+        cacheControl: '3600',
+        upsert: false,
+      });
     if (error) console.log(error);
   };
 </script>

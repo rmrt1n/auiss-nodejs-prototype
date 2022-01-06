@@ -1,7 +1,10 @@
 <script context="module">
   import { supabase } from '$lib/db';
   export const load = async () => {
-    const { data, error } = await supabase.from('clubs').select();
+    // prettier-ignore
+    const { data, error } = await supabase
+      .from('clubs')
+      .select();
 
     if (error) {
       console.log(error.message);

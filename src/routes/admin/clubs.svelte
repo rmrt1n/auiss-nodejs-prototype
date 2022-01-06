@@ -4,7 +4,10 @@
   import { TextInput } from 'carbon-components-svelte';
 
   export const load = async ({ session }) => {
-    const { data: clubs, error } = await supabase.from('clubs').select();
+    // prettier-ignore
+    const { data: clubs, error } = await supabase
+      .from('clubs')
+      .select();
 
     if (error) return {};
 
@@ -26,7 +29,12 @@
   ];
 
   const updateName = async (name, club_id) => {
-    const { error } = await supabase.from('clubs').update({ name: name }).eq('id', club_id);
+    // prettier-ignore
+    const { error } = await supabase
+      .from('clubs')
+      .update({ name: name })
+      .eq('id', club_id);
+
     if (error) {
       console.log(error);
       return;
@@ -35,7 +43,12 @@
   };
 
   const updateDesc = async (desc, club_id) => {
-    const { error } = await supabase.from('clubs').update({ desc: desc }).eq('id', club_id);
+    // prettier-ignore
+    const { error } = await supabase
+      .from('clubs')
+      .update({ desc: desc })
+      .eq('id', club_id);
+
     if (error) {
       console.log(error);
       return;

@@ -29,7 +29,13 @@ export const getSession = async (request) => {
   let role = '';
 
   if (authenticated) {
-    const { data } = await supabase.from('user_roles').select().eq('user_id', user.id).single();
+    // prettier-ignore
+    const { data } = await supabase
+      .from('user_roles')
+      .select()
+      .eq('user_id', user.id)
+      .single();
+
     role = data.role;
   }
 

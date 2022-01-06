@@ -11,7 +11,11 @@
 
   const getThumbnail = async () => {
     try {
-      const { data, error } = await supabase.storage.from('bucket').download(thumbnail_path);
+      // prettier-ignore
+      const { data, error } = await supabase
+        .storage
+        .from('bucket')
+        .download(thumbnail_path);
 
       if (error) throw error;
       src = URL.createObjectURL(data);

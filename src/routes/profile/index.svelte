@@ -3,7 +3,13 @@
   export const load = async ({ session }) => {
     const { user, authenticated, role } = session;
     if (authenticated) {
-      const { data: profile } = await supabase.from('profiles').select().eq('id', user.id).single();
+      // prettier-ignore
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select()
+        .eq('id', user.id)
+        .single();
+
       return { props: { profile, role } };
     }
     return {
