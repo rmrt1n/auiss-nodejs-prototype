@@ -2,7 +2,7 @@
 create type public.app_role as enum ('admin', 'user', 'student', 'alumni')
 
 -- TABLES
--- user profiles
+-- profiles
 create table public.profiles (
   id uuid primary key references auth.users,
   name character,
@@ -59,6 +59,45 @@ create table public.user_clubs (
 )
 alter table public.user_clubs enable row level security;
 
+-- blogposts
+create table public.blogposts (
+  id uuid default uuid_generate_v4() primary key,
+  created_at default now() timestamptz,
+  last_updated default now() timestamptz,
+  title character not null,
+  desc text,
+  slug character not null,
+  author character not null
+);
+alter table public.blogposts enable row level security;
+
+-- blogtags
+create table public.blogtags (
+  id uuid default uuid_generate_v4() primary key,
+  name character not null
+);
+alter table public.blogtags enable row level security;
+
+-- blogpost_tags
+create table public.blogpost_tags (
+  blogpost_id uuid references public.blogposts,
+  blogtag_id uuid references public.blogtags,
+  primary key (blogpost_id, blogtag_id)
+)
+alter table public.blogpost_tags enable row level security;
+
+-- VIEWS
+-- blogpost_tags_aggr
+create view blogpost_tags_aggr as
+  select 
+    post.*, 
+    array_agg(tag.name) as tags
+  from blogposts post
+  left join blogpost_tags pt
+  on post.id = pt.blogpost_id
+  left join blogtags tag
+  on tag.id = pt.blogtag_id
+  group by post.id
 
 -- FUNCTIONS
 create function public.handle_new_user() 

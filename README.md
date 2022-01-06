@@ -12,13 +12,11 @@ AUISS website clone in javascript with:
 - [ ] setup ci/cd
 - [ ] deploy to digitalocean
 - [x] add profile utility in header after login
-- [ ] add other user functionalities
-- [ ] add other admin functionalities
 - [x] add email validation for tp emails only
 - [ ] self-host supabase (on hold now because supabase studio doesn't support storage atm)
 - [ ] setup docker-compose for app+supabase+smtp+nginx
-- [ ] document database schema, policies, functions, triggers, etc
-- [ ] add logic for student & alumni roles
+- [ ] document database schema, policies, functions, triggers, etc (in progress)
+- [x] add logic for student & alumni roles
 - [x] add input validation for user profile update
 - [x] add user_club table and func
 - [x] add ui for user clubs
@@ -26,6 +24,9 @@ AUISS website clone in javascript with:
 - [ ] add rls for club update (only allow admin)
 - [x] add thumbnail update option with filepicker for club admin
 - [ ] supabase storage after file update returns old file bug???
+- [ ] create ui for blog post
+- [ ] add first blog post in markdown
+- [ ] add CRUD funcs for blogpost in admin view (edit in markdown)
 - [ ] ...
 
 ## Developing
