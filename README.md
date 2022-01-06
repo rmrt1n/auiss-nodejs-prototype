@@ -21,7 +21,7 @@ AUISS website clone in javascript with:
 - [ ] add logic for student & alumni roles
 - [x] add input validation for user profile update
 - [x] add user_club table and func
-- [ ] add ui for user clubs
+- [x] add ui for user clubs
 - [ ] fix posgres rls issue for select with auth.role() and auth.uid()
 - [ ] add rls for club update (only allow admin)
 - [x] add thumbnail update option with filepicker for club admin
