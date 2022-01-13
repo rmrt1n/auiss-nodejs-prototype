@@ -13,8 +13,26 @@
 </script>
 
 <script>
+  import { Row, Column } from 'carbon-components-svelte';
+  import BlogTile from '$lib/components/BlogTile.svelte';
+
   export let posts;
+
+  const postRows = [];
+  for (let i = 0; i < posts.length; i += 3) {
+    postRows.push([posts[i], posts[i + 1], posts[i + 2]]);
+  }
 </script>
 
-<h1>Blog</h1>
-<pre>{JSON.stringify(posts, null, 2)}</pre>
+<h1 class="section-title">Blog</h1>
+{#each postRows as row}
+  <Row>
+    {#each row as post}
+      <Column>
+        {#if post != undefined}
+          <BlogTile blog={post} />
+        {/if}
+      </Column>
+    {/each}
+  </Row>
+{/each}

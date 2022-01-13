@@ -27,7 +27,7 @@
 </script>
 
 <Grid padding>
-  <h1 style="margin-bottom: 1.5rem">Clubs</h1>
+  <h1 class="section-title">Clubs</h1>
 
   {#each clubRows as row}
     <Row>

@@ -43,3 +43,8 @@ a.bx--side-nav__link > .bx--side-nav__link-text,
     padding-right: 1rem;
   }
 }
+
+/* title h1 css */
+.section-title {
+  margin-bottom: 1.5rem;
+}

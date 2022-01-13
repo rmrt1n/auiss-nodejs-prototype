@@ -24,7 +24,7 @@ AUISS website clone in javascript with:
 - [ ] add rls for club update (only allow admin)
 - [x] add thumbnail update option with filepicker for club admin
 - [ ] supabase storage after file update returns old file bug???
-- [ ] create ui for blog post
+- [x] create ui for blog post
 - [ ] add first blog post in markdown
 - [ ] add CRUD funcs for blogpost in admin view (edit in markdown)
 - [ ] ...
