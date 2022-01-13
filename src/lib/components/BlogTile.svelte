@@ -5,7 +5,7 @@
 </script>
 
 <div>
-  <ClickableTile href={'blog/' + blog.slug}>
+  <ClickableTile href={`blog/posts/${blog.slug}`}>
     <SkeletonPlaceholder />
     <h3>{blog.title}</h3>
     <p>{new Date(blog.last_updated).toDateString()}</p>
