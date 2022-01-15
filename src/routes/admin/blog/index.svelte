@@ -1,29 +1,31 @@
 <script context="module">
   import { supabase } from '$lib/db';
-  export const load = async ({ session }) => {
+
+  export const load = async () => {
     // prettier-ignore
-    const { data: clubs, error } = await supabase
-      .from('clubs')
+    let { data: posts, error } = await supabase
+      .from('blogpost_tags_aggr')
       .select();
 
-    if (error) return {};
+    if (error) {
+      console.log(error);
+      return;
+    }
 
-    const { user } = session;
-
-    return { props: { clubs, user } };
+    return { props: { posts } };
   };
 </script>
 
 <script>
-  import { DataTable } from 'carbon-components-svelte';
+  import { DataTable, TextInput } from 'carbon-components-svelte';
   import Thumbnail from '$lib/components/Thumbnail.svelte';
-  import { TextInput } from 'carbon-components-svelte';
 
-  export let clubs;
+  export let posts;
 
   const headers = [
-    /* { key: 'id', value: 'ID' }, */
-    { key: 'name', value: 'Name' },
+    { key: 'title', value: 'Title' },
+    { key: 'slug', value: 'Slug' },
+    { key: 'author', value: 'Author' },
     { key: 'desc', value: 'Description' },
     { key: 'thumbnail_path', value: 'Thumbnail' },
   ];
@@ -31,7 +33,7 @@
   const updateValue = async (key, value, club_id) => {
     // prettier-ignore
     const { error } = await supabase
-      .from('clubs')
+      .from('blogposts')
       .update({[key]: value})
       .eq('id', club_id);
 
@@ -44,10 +46,10 @@
   };
 </script>
 
-<DataTable title="Clubs" {headers} rows={clubs}>
+<DataTable title="Blogposts" {headers} rows={posts}>
   <span slot="cell" let:row let:cell>
     {#if cell.key === 'thumbnail_path'}
-      <Thumbnail thumbnail_path={cell.value} name={row.name} />
+      <Thumbnail thumbnail_path={cell.value} name={row.title} ratio="3x4" />
     {:else}
       <TextInput
         value={cell.value}

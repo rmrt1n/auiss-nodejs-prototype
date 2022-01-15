@@ -3,6 +3,7 @@
 
   export let thumbnail_path;
   export let name;
+  export let ratio = '1x1';
 
   let src = '../' + thumbnail_path;
 
@@ -12,11 +13,13 @@
     // TODO: upload file func
     alert('not implemented yet');
   };
+
+  const wh = ratio === '1x1' ? 'width: 80px; height: 80px' : 'width: 120px; height: 80px';
 </script>
 
-<div class="club-thumbnail">
-  <div class="club-thumbnail-img">
-    <img {src} alt={name + ' thumbnail'} style="width: 80px; height: 80px;" />
+<div class="thumbnail">
+  <div class="thumbnail-img">
+    <img {src} alt={name + ' thumbnail'} style={wh} />
   </div>
   <FileUploaderButton
     disableLabelChanges
@@ -27,14 +30,14 @@
 </div>
 
 <style>
-  .club-thumbnail {
+  .thumbnail {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px;
   }
 
-  .club-thumbnail-img {
+  .thumbnail-img {
     margin-bottom: 5px;
   }
 </style>

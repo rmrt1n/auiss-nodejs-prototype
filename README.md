@@ -13,7 +13,7 @@ AUISS website clone in javascript with:
 - [ ] deploy to digitalocean
 - [x] add profile utility in header after login
 - [x] add email validation for tp emails only
-- [ ] self-host supabase (on hold now because supabase studio doesn't support storage atm)
+- [ ] self-host supabase (not on hold now, ditch supabase storage)
 - [ ] setup docker-compose for app+supabase+smtp+nginx
 - [ ] document database schema, policies, functions, triggers, etc (in progress)
 - [x] add logic for student & alumni roles
@@ -23,15 +23,17 @@ AUISS website clone in javascript with:
 - [ ] fix posgres rls issue for select with auth.role() and auth.uid()
 - [ ] add rls for club update (only allow admin)
 - [x] add thumbnail update option with filepicker for club admin
-- [ ] supabase storage after file update returns old file bug???
 - [x] create ui for blog post
 - [x] add first blog post in markdown
 - [ ] add CRUD funcs for blogpost in admin view (edit in markdown)
 - [ ] markdown img tag gets wrap by p getting indent. fix, hack, or ignore?
 - [x] decide: keep unprotected images in supabase or in repo
-- [ ] add blog thumbnails
+- [x] add blog thumbnails
 - [ ] add the rest of the blog posts
 - [ ] add file upload functionality to server
+- [ ] add pagination for blog posts
+- [ ] add contacts
+- [ ] add add row functionality for admin
 - [ ] ...
 
 ## Developing

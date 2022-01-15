@@ -9,7 +9,7 @@
 </script>
 
 <div class="club-tile">
-  <ClickableTile>
+  <ClickableTile href={`/clubs/${name.toLowerCase()}`}>
     <img {src} alt={name + ' thumbnail'} style="width: 150px; height: 150px" />
     <h1>{name}</h1>
     <p>{desc}</p>

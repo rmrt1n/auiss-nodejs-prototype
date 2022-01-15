@@ -1,19 +1,13 @@
-<h1 style="margin-bottom: 1.5rem">About us</h1>
+<h1>About us</h1>
 <p>
   Asia Pacific University Indonesian Student Society is an international student society, formed
   back in 2005. Initially we were created by our seniors to provide Indonesians student a platform
   to celebrate our own Independence Day and obviously, to also strengthen fellow Indonesians in APU
   bonds. We proudly stand as one of the biggest and most active society in our campus with our
-  varieties of event and activities.
-</p>
-
-<br />
-
-<p>
-  Not so similar with other common student societies out there, we decided to create and grow our
-  community in family-like environment, thus encourage members growth not only in organizational
-  aspect, but also in their own talent and interest. Currently we have 7 active clubs specializing
-  in various types of sport and art.
+  varieties of event and activities. Not so similar with other common student societies out there,
+  we decided to create and grow our community in family-like environment, thus encourage members
+  growth not only in organizational aspect, but also in their own talent and interest. Currently we
+  have 7 active clubs specializing in various types of sport and art.
 </p>
 
 <br />
@@ -25,3 +19,14 @@
   snatch the award of most active international community and the award of charity &amp community in
   2018.
 </p>
+
+<h1 style="margin-top: 1.5rem">Contact</h1>
+
+<style>
+  h1 {
+    margin-bottom: 1.5rem;
+  }
+  p {
+    text-indent: 2rem;
+  }
+</style>

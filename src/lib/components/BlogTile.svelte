@@ -1,12 +1,12 @@
 <script>
-  import { ClickableTile, SkeletonPlaceholder, Tag } from 'carbon-components-svelte';
+  import { ClickableTile, Tag } from 'carbon-components-svelte';
 
   export let blog;
 </script>
 
 <div>
   <ClickableTile href={`blog/posts/${blog.slug}`}>
-    <SkeletonPlaceholder />
+    <img src={blog.thumbnail_path} alt="thumbnail" />
     <h3>{blog.title}</h3>
     <p>{new Date(blog.last_updated).toDateString()}</p>
     <p>{blog.desc}</p>
@@ -16,3 +16,9 @@
     {/each}
   </ClickableTile>
 </div>
+
+<style>
+  img {
+    width: 100%;
+  }
+</style>

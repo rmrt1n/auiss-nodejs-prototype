@@ -34,7 +34,7 @@
     <SideNavLink href="/admin" text="Events" />
     <SideNavLink href="/admin/clubs" text="Clubs" />
     <SideNavLink href="/admin" text="Kedai" />
-    <SideNavLink href="/admin" text="Blog" />
+    <SideNavLink href="/admin/blog" text="Blog" />
     <SideNavLink href="/admin" text="About" />
     <SideNavLink href="/admin" text="Contact" />
   </SideNavItems>

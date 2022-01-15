@@ -20,9 +20,11 @@
 </script>
 
 <script>
-  import { Tag, Tile, SkeletonPlaceholder } from 'carbon-components-svelte';
+  import { Tag, Tile } from 'carbon-components-svelte';
 
   export let meta;
+
+  const src = '../../' + meta.thumbnail_path;
 </script>
 
 <div id="blog-container">
@@ -33,7 +35,9 @@
       <Tag>{tag}</Tag>
     {/each}
   </div>
-  <SkeletonPlaceholder style="width: 100%; margin-bottom: 2rem;" />
+  <div id="img">
+    <img {src} alt="thumbnail" style="width: 90%; margin-bottom: 1rem;" />
+  </div>
   <Tile id="blog-content">
     <slot />
     <p id="author">- {meta.author}</p>
@@ -45,16 +49,15 @@
     max-width: 750px;
   }
 
+  #img {
+    display: flex;
+    justify-content: center;
+  }
+
   #blog-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
-  #blog-content {
-    max-width: 750px;
-    padding: 3rem;
-    margin-top: 1rem;
   }
 
   #tags {
