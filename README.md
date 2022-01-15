@@ -28,9 +28,10 @@ AUISS website clone in javascript with:
 - [x] add first blog post in markdown
 - [ ] add CRUD funcs for blogpost in admin view (edit in markdown)
 - [ ] markdown img tag gets wrap by p getting indent. fix, hack, or ignore?
-- [ ] decide: keep unprotected images in supabase or in repo
+- [x] decide: keep unprotected images in supabase or in repo
 - [ ] add blog thumbnails
 - [ ] add the rest of the blog posts
+- [ ] add file upload functionality to server
 - [ ] ...
 
 ## Developing
