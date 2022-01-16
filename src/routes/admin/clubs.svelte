@@ -15,14 +15,27 @@
 </script>
 
 <script>
-  import { DataTable } from 'carbon-components-svelte';
+  import {
+    DataTable,
+    Toolbar,
+    ToolbarContent,
+    Modal,
+    ToolbarSearch,
+    Button,
+    Form,
+    FormGroup,
+    TextInput,
+    FileUploader,
+  } from 'carbon-components-svelte';
+  import Add16 from 'carbon-icons-svelte/lib/Add16';
   import Thumbnail from '$lib/components/Thumbnail.svelte';
-  import { TextInput } from 'carbon-components-svelte';
 
   export let clubs;
 
+  let open = false;
+  let name, desc;
+
   const headers = [
-    /* { key: 'id', value: 'ID' }, */
     { key: 'name', value: 'Name' },
     { key: 'desc', value: 'Description' },
     { key: 'thumbnail_path', value: 'Thumbnail' },
@@ -42,9 +55,22 @@
     }
     alert('Value successfully updated');
   };
+
+  const addClub = async () => {
+    console.log(name, desc);
+  };
 </script>
 
-<DataTable title="Clubs" {headers} rows={clubs}>
+<h1>Clubs</h1>
+
+<DataTable {headers} rows={clubs}>
+  <Toolbar>
+    <ToolbarContent>
+      <ToolbarSearch />
+      <Button icon={Add16} on:click={() => (open = true)}>Add Club</Button>
+    </ToolbarContent>
+  </Toolbar>
+
   <span slot="cell" let:row let:cell>
     {#if cell.key === 'thumbnail_path'}
       <Thumbnail thumbnail_path={cell.value} name={row.name} />
@@ -56,3 +82,29 @@
     {/if}
   </span>
 </DataTable>
+
+<Modal
+  hasForm
+  bind:open
+  modalHeading="Add new club"
+  primaryButtonText="Confirm"
+  size="sm"
+  on:submit={addClub}
+>
+  <Form>
+    <FormGroup>
+      <TextInput required labelText="Club name" bind:value={name} />
+    </FormGroup>
+    <FormGroup>
+      <TextInput required labelText="Club description" bind:value={desc} />
+    </FormGroup>
+    <FormGroup>
+      <FileUploader
+        labelTitle="Upload logo"
+        buttonLabel="Upload file"
+        labelDescription="Accepted file types: .jpg/.jpeg, .png, .bmp"
+        accept={['.jpg', '.jpeg', '.png', '.bmp']}
+      />
+    </FormGroup>
+  </Form>
+</Modal>

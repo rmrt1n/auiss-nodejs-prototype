@@ -25,7 +25,6 @@ AUISS website clone in javascript with:
 - [x] add thumbnail update option with filepicker for club admin
 - [x] create ui for blog post
 - [x] add first blog post in markdown
-- [ ] add CRUD funcs for blogpost in admin view (edit in markdown)
 - [ ] markdown img tag gets wrap by p getting indent. fix, hack, or ignore?
 - [x] decide: keep unprotected images in supabase or in repo
 - [x] add blog thumbnails
@@ -33,7 +32,8 @@ AUISS website clone in javascript with:
 - [ ] add file upload functionality to server
 - [ ] add pagination for blog posts
 - [ ] add contacts
-- [ ] add add row functionality for admin
+- [x] add add row functionality for admin
+- [ ] decide: ssr or ssg for blog (whether to put content to db)
 - [ ] ...
 
 ## Developing
