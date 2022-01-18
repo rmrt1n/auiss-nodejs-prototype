@@ -6,41 +6,6 @@ AUISS website clone in javascript with:
 - [carbon design system](https://www.carbondesignsystem.com/) (for quick ui)
 - [supabase](https://supabase.io) (for authentication)
 
-## Todo
-
-- [x] dockerize app
-- [ ] setup ci/cd
-- [ ] deploy to digitalocean
-- [x] add profile utility in header after login
-- [x] add email validation for tp emails only
-- [ ] self-host supabase (not on hold now, ditch supabase storage)
-- [ ] setup docker-compose for app+supabase+smtp+nginx
-- [ ] document database schema, policies, functions, triggers, etc (in progress)
-- [x] add logic for student & alumni roles
-- [x] add input validation for user profile update
-- [x] add user_club table and func
-- [x] add ui for user clubs
-- [ ] fix posgres rls issue for select with auth.role() and auth.uid()
-- [ ] add rls for club update (only allow admin)
-- [x] add thumbnail update option with filepicker for club admin
-- [x] create ui for blog post
-- [x] add first blog post in markdown
-- [ ] markdown img tag gets wrap by p getting indent. fix, hack, or ignore?
-- [x] decide: keep unprotected images in supabase or in repo
-- [x] add blog thumbnails
-- [ ] add the rest of the blog posts
-- [ ] add file upload functionality to server
-- [ ] add pagination for blog posts
-- [ ] add contacts
-- [x] add add row functionality for admin
-- [ ] decide: ssr or ssg for blog (whether to put content to db)
-- [ ] add rls policies to contacts table
-- [ ] add delete func for admin tables
-- [ ] add realtime update to admin table
-- [ ] add links directly to contacts
-- [ ] turn datatable into a component
-- [ ] ...
-
 ## Developing
 
 Setup local project:
@@ -85,3 +50,38 @@ After setup, copy the project url & anon key from the api setting. Rename the
 VITE_SUPABASE_URL=https://XXX.supabase.co
 VITE_SUPABASE_ANON_KEY=XXX
 ```
+
+## Todo
+
+- [x] dockerize app
+- [ ] setup ci/cd
+- [ ] deploy to digitalocean
+- [x] add profile utility in header after login
+- [x] add email validation for tp emails only
+- [ ] self-host supabase (not on hold now, ditch supabase storage)
+- [ ] setup docker-compose for app+supabase+smtp+nginx
+- [ ] document database schema, policies, functions, triggers, etc (in progress)
+- [x] add logic for student & alumni roles
+- [x] add input validation for user profile update
+- [x] add user_club table and func
+- [x] add ui for user clubs
+- [ ] fix posgres rls issue for select with auth.role() and auth.uid()
+- [ ] add rls for club update (only allow admin)
+- [x] add thumbnail update option with filepicker for club admin
+- [x] create ui for blog post
+- [x] add first blog post in markdown
+- [ ] markdown img tag gets wrap by p getting indent. fix, hack, or ignore?
+- [x] decide: keep unprotected images in supabase or in repo
+- [x] add blog thumbnails
+- [ ] add the rest of the blog posts
+- [ ] add file upload functionality to server
+- [ ] add pagination for blog posts
+- [x] add contacts
+- [x] add add row functionality for admin
+- [ ] decide: ssr or ssg for blog (whether to put content to db)
+- [ ] add rls policies to contacts table
+- [ ] add delete func for admin tables
+- [ ] add realtime update to admin table
+- [ ] add links directly to contacts
+- [ ] turn datatable into a component
+- [ ] ...
