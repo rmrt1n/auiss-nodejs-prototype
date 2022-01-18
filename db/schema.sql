@@ -67,7 +67,8 @@ create table public.blogposts (
   title character not null,
   desc text,
   slug character not null,
-  author character not null
+  author character not null,
+  thumbnail_path character
 );
 alter table public.blogposts enable row level security;
 
@@ -86,6 +87,14 @@ create table public.blogpost_tags (
 )
 alter table public.blogpost_tags enable row level security;
 
+-- contacts
+create table public.contacts (
+  id uuid default uuid_generate_v4() primary key,
+  service character not null,
+  value character
+)
+alter table public.contacts enable row level security;
+
 -- VIEWS
 -- blogpost_tags_aggr
 create view blogpost_tags_aggr as
@@ -100,21 +109,19 @@ create view blogpost_tags_aggr as
   group by post.id
 
 -- FUNCTIONS
-create function public.handle_new_user() 
-returns trigger 
-language plpgsql 
-security definer set search_path = public
-as $$
+create or replace function public.handle_new_user() 
+returns trigger as $$
 begin
   insert into public.profiles (id, tp_number)
   values (new.id, upper(split_part(new.email, '@', 1)));
 
-  insert into public.user_roles (id, role)
-  values (new.id, 'user'));
+  insert into public.user_roles (user_id, role)
+  values (new.id, 'user');
 
   return new;
 end;
-$$;
+$$ language plpgsql security definer;
+
 
 -- TRIGGERS
 create trigger on_auth_user_created

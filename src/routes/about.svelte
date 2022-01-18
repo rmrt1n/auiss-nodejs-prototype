@@ -1,3 +1,26 @@
+<script context="module">
+  import { supabase } from '$lib/db';
+  export const load = async () => {
+    // prettier-ignore
+    const { data: contacts, error } = await supabase
+      .from('contacts')
+      .select()
+
+    if (error) {
+      console.log(error);
+      return {};
+    }
+
+    return {
+      props: { contacts },
+    };
+  };
+</script>
+
+<script>
+  export let contacts;
+</script>
+
 <h1>About us</h1>
 <p>
   Asia Pacific University Indonesian Student Society is an international student society, formed
@@ -22,8 +45,13 @@
 
 <h1 style="margin-top: 1.5rem">Contact</h1>
 
+{#each contacts as c}
+  <h4>{c.service}: {c.value}</h4>
+{/each}
+
 <style>
-  h1 {
+  h1,
+  h4 {
     margin-bottom: 1.5rem;
   }
   p {

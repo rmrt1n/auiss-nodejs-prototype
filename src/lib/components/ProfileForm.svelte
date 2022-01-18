@@ -180,7 +180,7 @@
           </Row>
           <Row>
             <Column>
-              <Button type="submit" icon={ArrowRight16}>Sign In</Button>
+              <Button type="submit" icon={ArrowRight16}>Submit</Button>
             </Column>
           </Row>
         </Form>

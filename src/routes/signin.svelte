@@ -42,9 +42,14 @@
     }
 
     loading = true;
-    const { error } = await supabase.auth.signIn({
-      email: lower,
-    });
+    /* const { data, error } = await supabase.rpc('handle_new_user()') */
+    /* console.log(data, error) */
+    const { error } = await supabase.auth.signIn(
+      {
+        email: lower,
+      },
+      { redirectTo: 'http://localhost:3000/profile' }
+    );
     if (error) console.log(error.message);
     status = error ? 'error' : 'finished';
     description = error ? 'An error occured' : 'Check your inbox';

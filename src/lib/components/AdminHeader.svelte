@@ -36,6 +36,6 @@
     <SideNavLink href="/admin" text="Kedai" />
     <SideNavLink href="/admin/blog" text="Blog" />
     <SideNavLink href="/admin" text="About" />
-    <SideNavLink href="/admin" text="Contact" />
+    <SideNavLink href="/admin/contacts" text="Contacts" />
   </SideNavItems>
 </SideNav>

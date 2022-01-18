@@ -34,6 +34,11 @@ AUISS website clone in javascript with:
 - [ ] add contacts
 - [x] add add row functionality for admin
 - [ ] decide: ssr or ssg for blog (whether to put content to db)
+- [ ] add rls policies to contacts table
+- [ ] add delete func for admin tables
+- [ ] add realtime update to admin table
+- [ ] add links directly to contacts
+- [ ] turn datatable into a component
 - [ ] ...
 
 ## Developing

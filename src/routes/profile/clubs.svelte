@@ -43,7 +43,11 @@
         {#each row as club}
           <Column>
             {#if club != undefined}
-              <ClubTile name={club.name} desc={club.desc} thumbnail_path={club.thumbnail_path} />
+              <ClubTile
+                name={club.name}
+                desc={club.desc}
+                thumbnail_path={'../' + club.thumbnail_path}
+              />
             {/if}
           </Column>
         {/each}

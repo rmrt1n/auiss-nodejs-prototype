@@ -8,9 +8,7 @@
 
     if (error) return {};
 
-    const { user } = session;
-
-    return { props: { clubs, user } };
+    return { props: { clubs } };
   };
 </script>
 

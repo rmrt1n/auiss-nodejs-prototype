@@ -4,7 +4,7 @@
   import { Content, Grid, Theme } from 'carbon-components-svelte';
   import Header from '$lib/components/Header.svelte';
   import { session } from '$app/stores';
-  import { goto } from '$app/navigation';
+  /* import { goto } from '$app/navigation'; */
   import { supabase } from '$lib/db';
   import { setAuthCookie, unsetAuthCookie } from '$lib/utils/session';
 
@@ -12,11 +12,11 @@
     if (event !== 'SIGNED_OUT') {
       session.set({ user: _session.user });
       await setAuthCookie(_session);
-      goto('/profile');
+      /* goto('/profile'); */
     } else {
       session.set({ user: { guest: true } });
       await unsetAuthCookie(_session);
-      goto('/signin');
+      /* goto('/signin'); */
     }
   });
 
