@@ -83,5 +83,5 @@ VITE_SUPABASE_ANON_KEY=XXX
 - [ ] add delete func for admin tables
 - [ ] add realtime update to admin table
 - [ ] add links directly to contacts
-- [ ] turn datatable into a component
+- [ ] add delete func to tags in blogs (admin)
 - [ ] ...
