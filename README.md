@@ -73,15 +73,12 @@ VITE_SUPABASE_ANON_KEY=XXX
 - [ ] markdown img tag gets wrap by p getting indent. fix, hack, or ignore?
 - [x] decide: keep unprotected images in supabase or in repo
 - [x] add blog thumbnails
-- [ ] add the rest of the blog posts
 - [ ] add file upload functionality to server
 - [ ] add pagination for blog posts
 - [x] add contacts
 - [x] add add row functionality for admin
 - [ ] decide: ssr or ssg for blog (whether to put content to db)
-- [ ] add rls policies to contacts table
 - [ ] add delete func for admin tables
-- [ ] add realtime update to admin table
 - [ ] add links directly to contacts
-- [ ] add delete func to tags in blogs (admin)
+- [x] add delete func to tags in blogs (admin)
 - [ ] ...
