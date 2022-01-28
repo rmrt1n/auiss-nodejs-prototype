@@ -39,6 +39,24 @@ alter table public.clubs enable row level security;
 create policy "Enable read for everyone" on public.clubs 
   for select using (true);
 
+create policy "Enable insert for users with admin role" on public.clubs
+  for insert with check (
+    auth.uid() in (
+      select user_id
+      from public.user_roles
+      where role = 'admin'::app_role
+    )
+  )
+
+create policy "Enable delete for users with admin role" on public.clubs
+  for delete using (
+    auth.uid() in (
+      select user_id
+      from public.user_roles
+      where role = 'admin'::app_role
+    )
+  )
+
 create policy "Enable update for users with admin role" on public.clubs
   for update using (
     auth.uid() in (
