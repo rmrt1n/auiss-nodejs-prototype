@@ -17,7 +17,11 @@
     /// prettier-ignore
     const { data, error } = await supabase.from('blogtags').insert([{ name }]).single();
 
-    alert(error ? error.message : 'Tag added');
+    if (error) {
+      alert(error.message);
+      return;
+    }
+    alert('Tag added');
 
     name = '';
     tags = [...tags, data];

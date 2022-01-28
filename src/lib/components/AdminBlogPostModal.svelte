@@ -15,11 +15,18 @@
       .from('blogpost_tags')
       .insert(newRows)
 
-    alert(error ? error.message : 'Tags added');
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    alert('Tags added');
+
     post.tags = [...post.tags, ...curTags.map((e) => e.name)];
     curTags = [];
     open = false;
   };
+
   const isPostTag = (tagName) => {
     return post.tags.filter((e) => e === tagName).length > 0;
   };

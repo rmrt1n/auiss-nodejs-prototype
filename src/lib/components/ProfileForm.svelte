@@ -72,11 +72,12 @@
 
   const onSubmit = async () => {
     if (!isValidInput()) return;
-    const intake = new Date(year, month, 1);
     year = parseInt(year);
     // https://stackoverflow.com/questions/13566552/easiest-way-to-convert-month-name-to-month-number-in-js-jan-01
     month = new Date(Date.parse(month + ' 1, 2021')).getMonth() + 1;
+    const intake = new Date(year, month, 1);
     const diff = monthDiff(new Date(), intake);
+    console.log(year, month, intake, new Date(), diff);
     const newRole = diff >= 36 ? 'alumni' : 'student';
 
     // prettier-ignore
@@ -96,7 +97,7 @@
     const { error: e2 } = await supabase
       .from('user_roles')
       .update({ role: newRole })
-      .eq('id', id);
+      .eq('user_id', id);
     if (e2) console.log(e2.message);
     role = newRole;
   };

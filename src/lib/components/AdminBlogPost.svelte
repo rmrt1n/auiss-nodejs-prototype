@@ -16,7 +16,13 @@
       .delete()
       .match({ blogpost_id: post.id, blogtag_id: tagId })
 
-    if (error) alert(error.message);
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    alert('Tag removed');
+
     post.tags = post.tags.filter((e) => e !== tagName);
     tags = tags; // to update modal again DONT REMOVE FOR NOW
   };

@@ -65,8 +65,8 @@ VITE_SUPABASE_ANON_KEY=XXX
 - [x] add input validation for user profile update
 - [x] add user_club table and func
 - [x] add ui for user clubs
-- [ ] fix posgres rls issue for select with auth.role() and auth.uid()
-- [ ] add rls for club update (only allow admin)
+- [ ] fix posgres rls issue for select with auth.role() and auth.uid() (BUG)
+- [x] add rls for club update (only allow admin)
 - [x] add thumbnail update option with filepicker for club admin
 - [x] create ui for blog post
 - [x] add first blog post in markdown
@@ -77,8 +77,9 @@ VITE_SUPABASE_ANON_KEY=XXX
 - [ ] add pagination for blog posts
 - [x] add contacts
 - [x] add add row functionality for admin
-- [ ] decide: ssr or ssg for blog (whether to put content to db)
+- [x] decide: ssr or ssg for blog (whether to put content to db) (SSG)
 - [ ] add delete func for admin tables
 - [ ] add links directly to contacts
 - [x] add delete func to tags in blogs (admin)
+- [ ] add func for users to join club
 - [ ] ...
