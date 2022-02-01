@@ -1,11 +1,9 @@
 <script>
   import { ClickableTile } from 'carbon-components-svelte';
 
-  export let name;
-  export let desc;
-  export let thumbnail_path;
+  export let club;
 
-  const src = thumbnail_path;
+  const { name, desc, thumbnail_path: src } = club;
 </script>
 
 <div class="club-tile">

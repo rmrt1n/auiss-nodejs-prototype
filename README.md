@@ -81,5 +81,7 @@ VITE_SUPABASE_ANON_KEY=XXX
 - [x] add delete func for admin tables
 - [ ] add links directly to contacts
 - [x] add delete func to tags in blogs (admin)
-- [ ] add func for users to join club
+- [ ] add func for users to join club (halfway)
+- [ ] design user club requests tables
+- [ ] add new role for club admins??
 - [ ] ...

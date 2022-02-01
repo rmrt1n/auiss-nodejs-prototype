@@ -1,8 +1,8 @@
 <script context="module">
   import { supabase } from '$lib/db';
-  export const load = async () => {
+  export const load = async ({ session }) => {
     // prettier-ignore
-    const { data, error } = await supabase
+    const { data: clubs, error } = await supabase
       .from('clubs')
       .select();
 
@@ -10,7 +10,8 @@
       console.log(error.message);
       return {};
     }
-    return { props: { clubs: data } };
+
+    return { props: { clubs } };
   };
 </script>
 
@@ -34,7 +35,7 @@
       {#each row as club}
         <Column>
           {#if club != undefined}
-            <ClubTile name={club.name} desc={club.desc} thumbnail_path={club.thumbnail_path} />
+            <ClubTile {club} />
           {/if}
         </Column>
       {/each}
